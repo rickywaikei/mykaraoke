@@ -1,0 +1,122 @@
+{
+  "app": {
+    "name": "MyKaraoke",
+    "tagline": "Sing Together"
+  },
+  "nav": {
+    "rooms": "Rooms",
+    "playlists": "Playlists",
+    "songs": "Songs",
+    "profile": "Profile",
+    "settings": "Settings",
+    "signIn": "Sign in",
+    "signOut": "Sign out",
+    "search": "Search",
+    "searchPlaceholder": "Search for songs, rooms, or playlists..."
+  },
+  "home": {
+    "hero": {
+      "title": "Sing Your Heart Out",
+      "subtitle": "Create rooms, share songs, and enjoy karaoke with friends anywhere, anytime.",
+      "createRoom": "Create Room",
+      "joinRoom": "Join Room"
+    },
+    "categories": {
+      "title": "Explore Categories",
+      "subtitle": "Find the perfect karaoke songs for your next session",
+      "popular": "Popular Songs",
+      "new": "New Hits",
+      "classics": "Classics",
+      "favorites": "My Favorites",
+      "variety": "Variety",
+      "theme": "Theme Songs"
+    },
+    "stats": {
+      "activeUsers": "Active Users",
+      "songsAvailable": "Songs Available",
+      "countries": "Countries"
+    },
+    "howItWorks": {
+      "title": "How It Works",
+      "subtitle": "Get started with MyKaraoke in three simple steps",
+      "step1": {
+        "title": "Create or Join a Room",
+        "description": "Start your own karaoke party or join an existing one with friends. Invite others using a simple room code."
+      },
+      "step2": {
+        "title": "Add Songs to Queue",
+        "description": "Search for your favorite karaoke songs and add them to the shared queue. Everyone can contribute their picks."
+      },
+      "step3": {
+        "title": "Sing Together",
+        "description": "Enjoy singing with synchronized lyrics and video playback. The room owner can cast to a TV for the full experience."
+      }
+    },
+    "cta": {
+      "title": "Ready to Start Your Karaoke Party?",
+      "subtitle": "Join thousands of users already singing their hearts out on MyKaraoke",
+      "button": "Get Started Now"
+    }
+  },
+  "rooms": {
+    "title": "Karaoke Rooms",
+    "create": "Create Room",
+    "join": "Join Room",
+    "joinByCode": "Join by Code",
+    "enterCode": "Enter room code",
+    "public": "Public",
+    "private": "Private",
+    "hosted": "Hosted by",
+    "participants": "Participants",
+    "songs": "Songs",
+    "created": "Created",
+    "noRooms": "No rooms found",
+    "tryAdjusting": "Try adjusting your search or filters",
+    "filters": {
+      "publicOnly": "Public Only",
+      "withParticipants": "With Participants",
+      "withSongs": "With Songs"
+    }
+  },
+  "createRoom": {
+    "title": "Create a Karaoke Room",
+    "name": "Room Name",
+    "namePlaceholder": "Enter a name for your room",
+    "description": "Description",
+    "descriptionPlaceholder": "Describe your karaoke room (optional)",
+    "privacy": "Room Privacy",
+    "publicDescription": "Anyone can find and join your room",
+    "privateDescription": "Only people with the room code can join",
+    "create": "Create Room",
+    "cancel": "Cancel",
+    "creating": "Creating..."
+  },
+  "player": {
+    "noSong": "No song playing",
+    "addSongs": "Add songs to the queue to get started",
+    "lyrics": "Lyrics",
+    "queue": "Queue",
+    "noSongsInQueue": "No songs in queue",
+    "currentlyPlaying": "Currently playing",
+    "readyToStart": "Ready to start",
+    "joinRoom": "Join Room"
+  },
+  "profile": {
+    "myPlaylists": "My Playlists",
+    "myRooms": "My Rooms",
+    "recentSongs": "Recent Songs",
+    "createPlaylist": "Create Playlist",
+    "noPlaylists": "No playlists yet",
+    "createFirstPlaylist": "Create your first playlist to save your favorite songs",
+    "noRooms": "No rooms yet",
+    "createFirstRoom": "Create your first karaoke room to start singing",
+    "noRecentSongs": "No recent songs",
+    "recentSongsWillAppear": "Your recently played songs will appear here"
+  },
+  "language": {
+    "en": "English",
+    "zh-TW": "繁體中文",
+    "zh-CN": "简体中文",
+    "changeLanguage": "Change Language"
+  }
+}

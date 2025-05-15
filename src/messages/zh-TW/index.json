@@ -1,0 +1,122 @@
+{
+  "app": {
+    "name": "我的卡拉OK",
+    "tagline": "一起唱歌"
+  },
+  "nav": {
+    "rooms": "房間",
+    "playlists": "播放清單",
+    "songs": "歌曲",
+    "profile": "個人檔案",
+    "settings": "設定",
+    "signIn": "登入",
+    "signOut": "登出",
+    "search": "搜尋",
+    "searchPlaceholder": "搜尋歌曲、房間或播放清單..."
+  },
+  "home": {
+    "hero": {
+      "title": "盡情歌唱",
+      "subtitle": "創建房間、分享歌曲，隨時隨地與朋友一起享受卡拉OK。",
+      "createRoom": "創建房間",
+      "joinRoom": "加入房間"
+    },
+    "categories": {
+      "title": "探索分類",
+      "subtitle": "為您的下一場卡拉OK找到完美的歌曲",
+      "popular": "熱門歌曲",
+      "new": "熱歌新歌",
+      "classics": "經典",
+      "favorites": "我的最愛",
+      "variety": "綜藝",
+      "theme": "主題曲"
+    },
+    "stats": {
+      "activeUsers": "活躍用戶",
+      "songsAvailable": "可用歌曲",
+      "countries": "國家/地區"
+    },
+    "howItWorks": {
+      "title": "使用方法",
+      "subtitle": "透過三個簡單步驟開始使用我的卡拉OK",
+      "step1": {
+        "title": "創建或加入房間",
+        "description": "開始您自己的卡拉OK派對或加入朋友的房間。使用簡單的房間代碼邀請他人。"
+      },
+      "step2": {
+        "title": "將歌曲添加到隊列",
+        "description": "搜尋您喜愛的卡拉OK歌曲並將其添加到共享隊列中。每個人都可以貢獻自己的選擇。"
+      },
+      "step3": {
+        "title": "一起唱歌",
+        "description": "享受同步歌詞和視頻播放的歌唱體驗。房間擁有者可以投射到電視以獲得完整體驗。"
+      }
+    },
+    "cta": {
+      "title": "準備開始您的卡拉OK派對了嗎？",
+      "subtitle": "加入已經在我的卡拉OK上盡情歌唱的數千名用戶",
+      "button": "立即開始"
+    }
+  },
+  "rooms": {
+    "title": "卡拉OK房間",
+    "create": "創建房間",
+    "join": "加入房間",
+    "joinByCode": "通過代碼加入",
+    "enterCode": "輸入房間代碼",
+    "public": "公開",
+    "private": "私人",
+    "hosted": "主持人",
+    "participants": "參與者",
+    "songs": "歌曲",
+    "created": "創建於",
+    "noRooms": "未找到房間",
+    "tryAdjusting": "嘗試調整您的搜尋或篩選條件",
+    "filters": {
+      "publicOnly": "僅公開",
+      "withParticipants": "有參與者",
+      "withSongs": "有歌曲"
+    }
+  },
+  "createRoom": {
+    "title": "創建卡拉OK房間",
+    "name": "房間名稱",
+    "namePlaceholder": "為您的房間輸入名稱",
+    "description": "描述",
+    "descriptionPlaceholder": "描述您的卡拉OK房間（可選）",
+    "privacy": "房間隱私",
+    "publicDescription": "任何人都可以找到並加入您的房間",
+    "privateDescription": "只有擁有房間代碼的人才能加入",
+    "create": "創建房間",
+    "cancel": "取消",
+    "creating": "創建中..."
+  },
+  "player": {
+    "noSong": "沒有正在播放的歌曲",
+    "addSongs": "添加歌曲到隊列以開始",
+    "lyrics": "歌詞",
+    "queue": "隊列",
+    "noSongsInQueue": "隊列中沒有歌曲",
+    "currentlyPlaying": "正在播放",
+    "readyToStart": "準備開始",
+    "joinRoom": "加入房間"
+  },
+  "profile": {
+    "myPlaylists": "我的播放清單",
+    "myRooms": "我的房間",
+    "recentSongs": "最近的歌曲",
+    "createPlaylist": "創建播放清單",
+    "noPlaylists": "還沒有播放清單",
+    "createFirstPlaylist": "創建您的第一個播放清單以保存您喜愛的歌曲",
+    "noRooms": "還沒有房間",
+    "createFirstRoom": "創建您的第一個卡拉OK房間以開始唱歌",
+    "noRecentSongs": "沒有最近的歌曲",
+    "recentSongsWillAppear": "您最近播放的歌曲將顯示在這裡"
+  },
+  "language": {
+    "en": "English",
+    "zh-TW": "繁體中文",
+    "zh-CN": "简体中文",
+    "changeLanguage": "更改語言"
+  }
+}

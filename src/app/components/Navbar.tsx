@@ -5,6 +5,10 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { FaMicrophone, FaMusic, FaUser, FaSignOutAlt, FaDoorOpen, FaHeadphones, FaSearch } from 'react-icons/fa';
 import { useState, useEffect } from 'react';
+import { useTranslations } from 'next-intl';
+import { usePathname } from 'next/navigation';
+import { useLocale } from 'next-intl';
+import LanguageSelector from './LanguageSelector';
 
 export default function Navbar() {
   const { data: session } = useSession();
@@ -12,6 +16,12 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+
+  // Get translations
+  const t = useTranslations('nav');
+  const appT = useTranslations('app');
+  const locale = useLocale();
+  const pathname = usePathname();
 
   // Handle scroll effect
   useEffect(() => {
@@ -56,32 +66,35 @@ export default function Navbar() {
                 <FaMicrophone className="h-6 w-6 text-white relative z-10" />
               </div>
               <div className="ml-2 flex flex-col">
-                <span className="text-xl font-bold gradient-text">MyKaraoke</span>
-                <span className="text-xs text-gray-400 -mt-1">Sing Together</span>
+                <span className="text-xl font-bold gradient-text">{appT('name')}</span>
+                <span className="text-xs text-gray-400 -mt-1">{appT('tagline')}</span>
               </div>
             </Link>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-1">
-            <Link href="/rooms" className="nav-link">
-              <FaDoorOpen className="inline-block mr-1" /> Rooms
+            <Link href={`/${locale}/rooms`} className="nav-link">
+              <FaDoorOpen className="inline-block mr-1" /> {t('rooms')}
             </Link>
-            <Link href="/playlists" className="nav-link">
-              <FaMusic className="inline-block mr-1" /> Playlists
+            <Link href={`/${locale}/playlists`} className="nav-link">
+              <FaMusic className="inline-block mr-1" /> {t('playlists')}
             </Link>
-            <Link href="/songs/popular" className="nav-link">
-              <FaHeadphones className="inline-block mr-1" /> Songs
+            <Link href={`/${locale}/songs/popular`} className="nav-link">
+              <FaHeadphones className="inline-block mr-1" /> {t('songs')}
             </Link>
 
             {/* Search Button */}
             <button
               onClick={() => setSearchOpen(!searchOpen)}
               className="p-2 text-gray-300 hover:text-white transition-colors duration-200 ml-2"
-              aria-label="Search"
+              aria-label={t('search')}
             >
               <FaSearch />
             </button>
+
+            {/* Language Selector */}
+            <LanguageSelector />
 
             {/* User Menu */}
             {session ? (
@@ -113,18 +126,18 @@ export default function Navbar() {
                       <p className="text-xs text-gray-400 truncate">{session.user?.email}</p>
                     </div>
                     <Link
-                      href="/profile"
+                      href={`/${locale}/profile`}
                       className="block px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-gray-800/50"
                       onClick={() => setIsMenuOpen(false)}
                     >
-                      Your Profile
+                      {t('profile')}
                     </Link>
                     <Link
-                      href="/settings"
+                      href={`/${locale}/settings`}
                       className="block px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-gray-800/50"
                       onClick={() => setIsMenuOpen(false)}
                     >
-                      Settings
+                      {t('settings')}
                     </Link>
                     <div className="border-t border-gray-700 my-1"></div>
                     <button
@@ -134,7 +147,7 @@ export default function Navbar() {
                       }}
                       className="block w-full text-left px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-gray-800/50"
                     >
-                      Sign out
+                      {t('signOut')}
                     </button>
                   </div>
                 )}
@@ -144,7 +157,7 @@ export default function Navbar() {
                 onClick={() => signIn('google')}
                 className="btn btn-primary ml-4"
               >
-                Sign in
+                {t('signIn')}
               </button>
             )}
           </div>
@@ -192,7 +205,7 @@ export default function Navbar() {
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search for songs, rooms, or playlists..."
+                placeholder={t('searchPlaceholder')}
                 className="w-full input pr-10"
                 autoFocus
               />
@@ -233,32 +246,32 @@ export default function Navbar() {
 
                 <div className="space-y-1">
                   <Link
-                    href="/rooms"
+                    href={`/${locale}/rooms`}
                     className="flex items-center w-full px-3 py-2 text-gray-300 hover:text-white hover:bg-gray-800/50 rounded-lg"
                     onClick={() => setIsMenuOpen(false)}
                   >
-                    <FaDoorOpen className="mr-3" /> Rooms
+                    <FaDoorOpen className="mr-3" /> {t('rooms')}
                   </Link>
                   <Link
-                    href="/playlists"
+                    href={`/${locale}/playlists`}
                     className="flex items-center w-full px-3 py-2 text-gray-300 hover:text-white hover:bg-gray-800/50 rounded-lg"
                     onClick={() => setIsMenuOpen(false)}
                   >
-                    <FaMusic className="mr-3" /> Playlists
+                    <FaMusic className="mr-3" /> {t('playlists')}
                   </Link>
                   <Link
-                    href="/songs/popular"
+                    href={`/${locale}/songs/popular`}
                     className="flex items-center w-full px-3 py-2 text-gray-300 hover:text-white hover:bg-gray-800/50 rounded-lg"
                     onClick={() => setIsMenuOpen(false)}
                   >
-                    <FaHeadphones className="mr-3" /> Songs
+                    <FaHeadphones className="mr-3" /> {t('songs')}
                   </Link>
                   <Link
-                    href="/profile"
+                    href={`/${locale}/profile`}
                     className="flex items-center w-full px-3 py-2 text-gray-300 hover:text-white hover:bg-gray-800/50 rounded-lg"
                     onClick={() => setIsMenuOpen(false)}
                   >
-                    <FaUser className="mr-3" /> Profile
+                    <FaUser className="mr-3" /> {t('profile')}
                   </Link>
                 </div>
 
@@ -270,7 +283,7 @@ export default function Navbar() {
                     }}
                     className="flex items-center w-full px-3 py-2 text-gray-300 hover:text-white hover:bg-gray-800/50 rounded-lg"
                   >
-                    <FaSignOutAlt className="mr-3" /> Sign out
+                    <FaSignOutAlt className="mr-3" /> {t('signOut')}
                   </button>
                 </div>
               </div>
@@ -280,7 +293,7 @@ export default function Navbar() {
                   onClick={() => signIn('google')}
                   className="btn btn-primary w-full"
                 >
-                  Sign in with Google
+                  {t('signIn')}
                 </button>
                 <p className="text-center text-sm text-gray-400 mt-4">
                   Sign in to create rooms and save your favorite songs
