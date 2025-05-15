@@ -1,6 +1,5 @@
 /** @type {import('next').NextConfig} */
 const { join } = require('path');
-const withNextIntl = require('next-intl/plugin')('./src/app/i18n.ts');
 
 const nextConfig = {
   // Look for .env files in the root directory
@@ -28,4 +27,4 @@ const nextConfig = {
   },
 };
 
-module.exports = withNextIntl(nextConfig);
+module.exports = nextConfig;

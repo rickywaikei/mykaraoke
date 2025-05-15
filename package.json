@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "cd src && next dev --turbopack",
-    "build": "cd src && next build",
-    "start": "cd src && next start",
-    "lint": "cd src && next lint"
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
   "dependencies": {
     "@tailwindcss/forms": "^0.5.10",
