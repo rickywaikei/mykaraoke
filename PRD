@@ -1,0 +1,73 @@
+Karaoke App - Product Requirements Document
+Project Overview
+The Karaoke App is a web-based application built with Next.js, JavaScript, and Tailwind CSS. It allows users to sign in with their YouTube accounts, create Karaoke rooms, and collaborate on a shared queue of songs. Users can search for and save Karaoke song links from YouTube to their personal playlists, and then add them to the active room's queue. The songs in the queue are played on the room owner's device, which can then be mirrored to a TV for the group to sing along.
+
+Key Features
+User Authentication:
+
+Users can sign in with their YouTube account using OAuth 2.0.
+Users can view and manage their profile information.
+Karaoke Room Management:
+
+Users can create a new Karaoke room.
+Users can join an existing Karaoke room.
+Room owners can manage the room settings, such as room name, description, and visibility.
+Room owners can invite other users to join the room.
+Users in the room can view the list of participants.
+Shared Song Queue:
+
+Users in the same Karaoke room can view and interact with the shared song queue.
+Users can add songs to the queue by searching for Karaoke versions on YouTube.
+Users can reorder the songs in the queue.
+Users can remove songs from the queue.
+The queue is updated in real-time for all users in the room.
+Karaoke Playback:
+
+The songs in the Karaoke room's queue are played on the room owner's device, using the YouTube player integration.
+The room owner can control the playback, such as play, pause, and skip the current song.
+The app will display the lyrics for the current song, synchronized with the video playback.
+The room owner can mirror the playback to a connected TV or display for the group to sing along.
+Playlists:
+
+Users can create and manage their personal Karaoke playlists.
+Users can add songs from their playlists to the Karaoke room's queue.
+Users can share their playlists with other users in the same Karaoke room.
+Chat:
+
+Users in the same Karaoke room can communicate with each other through a real-time chat feature.
+Users can send text messages, emojis, and other multimedia content.
+The chat history is displayed for all users in the room.
+User Roles and Permissions:
+
+Room owners have full control over the room settings, queue management, and playback control.
+Regular users can interact with the queue and chat, but have limited permissions.
+The app will enforce appropriate access control and permissions based on user roles.
+Responsive Design:
+
+The Karaoke App will be designed to work seamlessly on various devices, including desktops, tablets, and mobile phones.
+The user interface will adapt to different screen sizes and orientations.
+Accessibility:
+
+The app will follow WCAG (Web Content Accessibility Guidelines) standards to ensure it is accessible to users with disabilities.
+Features like keyboard navigation, screen reader support, and high-contrast themes will be implemented.
+Analytics and Reporting:
+
+The app will provide usage analytics and reports for room owners, such as the number of active users, song playback statistics, and chat activity.
+Room owners can use this data to optimize the Karaoke experience and monitor the usage of their rooms.
+Technical Stack
+Front-end: Next.js, React, Tailwind CSS
+Back-end: Node.js, Express.js
+Database: MongoDB or Firebase Firestore
+Authentication: Google OAuth 2.0
+Real-time Communication: Socket.IO or Firebase Realtime Database
+Video Playback: YouTube iFrame API
+Casting: Google Cast SDK or Chromecast integration
+Deployment: Vercel or AWS
+Development Roadmap
+The development roadmap remains the same as in the previous version, with the addition of the following task:
+
+Sprint 4: Karaoke Playback and Casting
+Integrate the YouTube player API to play the songs from the Karaoke room's queue on the room owner's device
+Implement the ability for the room owner to mirror the playback to a connected TV or display
+The rest of the roadmap remains the same, with the appropriate adjustments to accommodate the new feature.
+
