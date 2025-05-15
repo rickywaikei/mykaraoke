@@ -1,5 +1,11 @@
 /** @type {import('next').NextConfig} */
+const { join } = require('path');
+
 const nextConfig = {
+  // Look for .env files in the root directory
+  env: {
+    APP_ROOT_PATH: join(__dirname),
+  },
   images: {
     remotePatterns: [
       {
