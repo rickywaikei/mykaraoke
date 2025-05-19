@@ -7,51 +7,85 @@ import Navbar from "./components/Navbar";
 import { FaMicrophone, FaMusic, FaStar, FaHeart, FaFire, FaRandom, FaPlay, FaUsers, FaGlobe } from "react-icons/fa";
 import { useLanguage } from "./contexts/LanguageContext";
 
-// Define category data
-const categories = [
-  {
-    id: 'popular',
-    title: '热门歌曲',
-    icon: <FaFire className="text-red-500 text-2xl" />,
-    color: 'from-red-500 to-orange-500',
-    image: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=2574&auto=format&fit=crop'
-  },
-  {
-    id: 'new',
-    title: '热歌新歌',
-    icon: <FaMusic className="text-blue-500 text-2xl" />,
-    color: 'from-blue-500 to-indigo-500',
-    image: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=2670&auto=format&fit=crop'
-  },
-  {
-    id: 'classics',
-    title: '经典',
-    icon: <FaStar className="text-yellow-500 text-2xl" />,
-    color: 'from-yellow-500 to-amber-500',
-    image: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?q=80&w=2670&auto=format&fit=crop'
-  },
-  {
-    id: 'favorites',
-    title: '我的最爱',
-    icon: <FaHeart className="text-pink-500 text-2xl" />,
-    color: 'from-pink-500 to-rose-500',
-    image: 'https://images.unsplash.com/photo-1516280440614-37939bbacd81?q=80&w=2670&auto=format&fit=crop'
-  },
-  {
-    id: 'variety',
-    title: '综艺',
-    icon: <FaRandom className="text-purple-500 text-2xl" />,
-    color: 'from-purple-500 to-violet-500',
-    image: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=2670&auto=format&fit=crop'
-  },
-  {
-    id: 'theme',
-    title: '主题点',
-    icon: <FaMicrophone className="text-green-500 text-2xl" />,
-    color: 'from-green-500 to-emerald-500',
-    image: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=2670&auto=format&fit=crop'
-  },
-];
+// Define category data with direct translations
+const getCategoryData = (language: string) => {
+  // Define translations for each language
+  const translations = {
+    'en': {
+      popular: 'Popular Songs',
+      new: 'New Hits',
+      classics: 'Classics',
+      favorites: 'My Favorites',
+      variety: 'Variety',
+      theme: 'Theme Songs'
+    },
+    'zh-TW': {
+      popular: '熱門歌曲',
+      new: '熱歌新歌',
+      classics: '經典',
+      favorites: '我的最愛',
+      variety: '綜藝',
+      theme: '主題曲'
+    },
+    'zh-CN': {
+      popular: '热门歌曲',
+      new: '热歌新歌',
+      classics: '经典',
+      favorites: '我的最爱',
+      variety: '综艺',
+      theme: '主题曲'
+    }
+  };
+
+  // Get translations for the current language or fallback to English
+  const currentTranslations = translations[language as keyof typeof translations] || translations['en'];
+
+  // Return category data with translated titles
+  return [
+    {
+      id: 'popular',
+      title: currentTranslations.popular,
+      icon: <FaFire className="text-red-500 text-2xl" />,
+      color: 'from-red-500 to-orange-500',
+      image: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=2574&auto=format&fit=crop'
+    },
+    {
+      id: 'new',
+      title: currentTranslations.new,
+      icon: <FaMusic className="text-blue-500 text-2xl" />,
+      color: 'from-blue-500 to-indigo-500',
+      image: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=2670&auto=format&fit=crop'
+    },
+    {
+      id: 'classics',
+      title: currentTranslations.classics,
+      icon: <FaStar className="text-yellow-500 text-2xl" />,
+      color: 'from-yellow-500 to-amber-500',
+      image: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?q=80&w=2670&auto=format&fit=crop'
+    },
+    {
+      id: 'favorites',
+      title: currentTranslations.favorites,
+      icon: <FaHeart className="text-pink-500 text-2xl" />,
+      color: 'from-pink-500 to-rose-500',
+      image: 'https://images.unsplash.com/photo-1516280440614-37939bbacd81?q=80&w=2670&auto=format&fit=crop'
+    },
+    {
+      id: 'variety',
+      title: currentTranslations.variety,
+      icon: <FaRandom className="text-purple-500 text-2xl" />,
+      color: 'from-purple-500 to-violet-500',
+      image: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=2670&auto=format&fit=crop'
+    },
+    {
+      id: 'theme',
+      title: currentTranslations.theme,
+      icon: <FaMicrophone className="text-green-500 text-2xl" />,
+      color: 'from-green-500 to-emerald-500',
+      image: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=2670&auto=format&fit=crop'
+    },
+  ];
+};
 
 // Featured songs for the hero section
 const featuredSongs = [
@@ -86,10 +120,16 @@ export default function Home() {
   const [currentSongIndex, setCurrentSongIndex] = useState(0);
   const [animatedStats, setAnimatedStats] = useState(statsData.map(() => 0));
   const statsRef = useRef<HTMLDivElement>(null);
+  const categoriesRef = useRef<HTMLDivElement>(null);
   const [isStatsVisible, setIsStatsVisible] = useState(false);
 
   // Get translations
   const { t, language } = useLanguage();
+
+  // Create categories with translated titles - recreate when language changes
+  const categories = useMemo(() => {
+    return getCategoryData(language);
+  }, [language]);
 
   // Create stats with translated labels - recreate when language changes
   const stats = useMemo(() => {
@@ -154,6 +194,13 @@ export default function Home() {
   // Format large numbers with commas
   const formatNumber = (num: number) => {
     return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
+
+  // Scroll to categories section
+  const scrollToCategories = () => {
+    if (categoriesRef.current) {
+      categoriesRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (
@@ -246,9 +293,16 @@ export default function Home() {
         </div>
 
         {/* Scroll indicator */}
-        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <div
+          className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce cursor-pointer hover:text-primary-500 transition-colors duration-300"
+          onClick={scrollToCategories}
+          aria-label="Scroll to categories"
+          role="button"
+          tabIndex={0}
+          onKeyDown={(e) => e.key === 'Enter' && scrollToCategories()}
+        >
           <svg
-            className="w-6 h-6 text-white"
+            className="w-8 h-8 text-white hover:text-primary-500 transition-colors duration-300"
             fill="none"
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -262,7 +316,7 @@ export default function Home() {
       </section>
 
       {/* Categories Section with 3D Cards */}
-      <section className="py-20 relative">
+      <section ref={categoriesRef} className="py-20 relative">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 gradient-text">{t('home.categories.title')}</h2>

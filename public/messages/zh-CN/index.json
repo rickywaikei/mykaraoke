@@ -76,20 +76,38 @@
       "publicOnly": "仅公开",
       "withParticipants": "有参与者",
       "withSongs": "有歌曲"
+    },
+    "createRoom": {
+      "title": "创建卡拉OK房间",
+      "back": "返回",
+      "name": "房间名称 *",
+      "namePlaceholder": "为您的房间输入名称",
+      "description": "描述",
+      "descriptionPlaceholder": "描述您的卡拉OK房间（可选）",
+      "privacy": "房间隐私",
+      "publicDesc": "任何人都可以找到并加入您的房间",
+      "privateDesc": "只有拥有房间代码的人才能加入",
+      "cancel": "取消",
+      "creating": "创建中...",
+      "createButton": "创建房间",
+      "success": "房间创建成功！",
+      "errors": {
+        "notSignedIn": "您必须登录才能创建房间",
+        "nameRequired": "房间名称是必填项",
+        "failed": "创建房间失败"
+      }
+    },
+    "roomPage": {
+      "notFound": "未找到房间",
+      "backToRooms": "返回房间列表",
+      "lyrics": "歌词",
+      "queue": "队列",
+      "noSongs": "队列中没有歌曲",
+      "searchSongs": "搜索要添加的歌曲...",
+      "chat": "聊天",
+      "sendMessage": "发送",
+      "messagePlaceholder": "输入消息..."
     }
-  },
-  "createRoom": {
-    "title": "创建卡拉OK房间",
-    "name": "房间名称",
-    "namePlaceholder": "为您的房间输入名称",
-    "description": "描述",
-    "descriptionPlaceholder": "描述您的卡拉OK房间（可选）",
-    "privacy": "房间隐私",
-    "publicDescription": "任何人都可以找到并加入您的房间",
-    "privateDescription": "只有拥有房间代码的人才能加入",
-    "create": "创建房间",
-    "cancel": "取消",
-    "creating": "创建中..."
   },
   "player": {
     "noSong": "没有正在播放的歌曲",
@@ -99,7 +117,31 @@
     "noSongsInQueue": "队列中没有歌曲",
     "currentlyPlaying": "正在播放",
     "readyToStart": "准备开始",
-    "joinRoom": "加入房间"
+    "joinRoom": "加入房间",
+    "lyricsPlaceholder": "歌词将在这里显示，与歌曲播放同步。"
+  },
+  "playlists": {
+    "title": "播放列表",
+    "create": "创建播放列表",
+    "searchPlaceholder": "搜索播放列表...",
+    "favoritesOnly": "仅收藏",
+    "songs": "首歌曲",
+    "noPlaylists": "未找到播放列表",
+    "tryAdjusting": "尝试调整您的搜索或筛选条件"
+  },
+  "songs": {
+    "popular": "热门歌曲",
+    "searchPlaceholder": "搜索歌曲...",
+    "filters": "筛选",
+    "favoritesOnly": "仅收藏",
+    "genre": "流派",
+    "language": "语言",
+    "artist": "艺术家",
+    "title": "标题",
+    "duration": "时长",
+    "plays": "播放次数",
+    "noSongs": "未找到歌曲",
+    "tryAdjusting": "尝试调整您的搜索或筛选条件"
   },
   "profile": {
     "myPlaylists": "我的播放列表",
@@ -118,5 +160,8 @@
     "zh-TW": "繁體中文",
     "zh-CN": "简体中文",
     "changeLanguage": "更改语言"
+  },
+  "common": {
+    "back": "返回"
   }
 }

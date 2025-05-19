@@ -39,6 +39,7 @@ export default function SearchBar({
   // Clear search input
   const handleClear = () => {
     setQuery('');
+    onSearch(''); // Explicitly call onSearch with empty string to reset filters
     if (inputRef.current) {
       inputRef.current.focus();
     }
@@ -66,9 +67,8 @@ export default function SearchBar({
   // Handle search on input change with debounce
   useEffect(() => {
     const timer = setTimeout(() => {
-      if (query.trim()) {
-        onSearch(query.trim());
-      }
+      // Always call onSearch, even with empty string to reset filters
+      onSearch(query.trim());
     }, 500);
 
     return () => clearTimeout(timer);

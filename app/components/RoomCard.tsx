@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { FaUsers, FaLock, FaUnlock, FaMusic, FaCalendarAlt, FaPlay, FaChevronRight, FaHashtag } from 'react-icons/fa';
 import { Room } from '../types';
+import { useLanguage } from '../contexts/LanguageContext';
 
 interface RoomCardProps {
   room: Room;
@@ -12,6 +13,7 @@ interface RoomCardProps {
 
 export default function RoomCard({ room }: RoomCardProps) {
   const [isHovered, setIsHovered] = useState(false);
+  const { t } = useLanguage();
 
   const formatDate = (date: Date) => {
     return new Date(date).toLocaleDateString();
@@ -72,12 +74,12 @@ export default function RoomCard({ room }: RoomCardProps) {
             {room.isPublic ? (
               <>
                 <FaUnlock className="text-green-400 mr-1" />
-                <span className="text-white">Public</span>
+                <span className="text-white">{t('rooms.public')}</span>
               </>
             ) : (
               <>
                 <FaLock className="text-yellow-400 mr-1" />
-                <span className="text-white">Private</span>
+                <span className="text-white">{t('rooms.private')}</span>
               </>
             )}
           </div>
@@ -102,7 +104,7 @@ export default function RoomCard({ room }: RoomCardProps) {
                   className="object-cover"
                 />
               </div>
-              <span className="text-xs text-gray-200">Hosted by {room.ownerName}</span>
+              <span className="text-xs text-gray-200">{t('rooms.hosted')} {room.ownerName}</span>
             </div>
           </div>
 
@@ -111,7 +113,7 @@ export default function RoomCard({ room }: RoomCardProps) {
             <div className="absolute inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
               <div className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full flex items-center">
                 <FaPlay className="text-white mr-2" />
-                <span className="text-white font-medium">Join Now</span>
+                <span className="text-white font-medium">{t('rooms.join')}</span>
               </div>
             </div>
           )}
@@ -130,7 +132,7 @@ export default function RoomCard({ room }: RoomCardProps) {
                 <FaUsers className="mr-1" />
               </div>
               <div className="text-lg font-bold text-white">{room.participants.length}</div>
-              <div className="text-xs text-gray-400">Participants</div>
+              <div className="text-xs text-gray-400">{t('rooms.participants')}</div>
             </div>
 
             <div className="glass rounded-lg p-2 text-center">
@@ -138,14 +140,14 @@ export default function RoomCard({ room }: RoomCardProps) {
                 <FaMusic className="mr-1" />
               </div>
               <div className="text-lg font-bold text-white">{room.queue.length}</div>
-              <div className="text-xs text-gray-400">Songs</div>
+              <div className="text-xs text-gray-400">{t('rooms.songs')}</div>
             </div>
           </div>
 
           {/* Created Date */}
           <div className="text-xs text-gray-500 flex items-center mt-auto">
             <FaCalendarAlt className="mr-1" />
-            <span>Created {formatDate(room.createdAt)}</span>
+            <span>{t('rooms.created')} {formatDate(room.createdAt)}</span>
           </div>
         </div>
 
@@ -153,10 +155,10 @@ export default function RoomCard({ room }: RoomCardProps) {
         <div className="p-3 border-t border-gray-800/50">
           <div className="flex items-center justify-between text-sm">
             <span className="text-gray-400">
-              {room.isPlaying ? 'Currently playing' : 'Ready to start'}
+              {room.isPlaying ? t('player.currentlyPlaying') : t('player.readyToStart')}
             </span>
             <div className="flex items-center text-primary-400 font-medium">
-              <span>Join Room</span>
+              <span>{t('player.joinRoom')}</span>
               <FaChevronRight className="ml-1 text-xs" />
             </div>
           </div>

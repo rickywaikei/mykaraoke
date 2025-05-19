@@ -9,6 +9,8 @@ import Navbar from '../../components/Navbar';
 import PlayerControls from '../../components/PlayerControls';
 import SearchBar from '../../components/SearchBar';
 import { Room, Song, Message } from '../../types';
+import { useLanguage } from '../../contexts/LanguageContext';
+import BackButton from '../../components/BackButton';
 
 // Mock data for demonstration
 const mockRoom: Room = {
@@ -86,6 +88,7 @@ export default function RoomPage() {
   const params = useParams();
   const router = useRouter();
   const roomId = params.id as string;
+  const { t } = useLanguage();
 
   const [room, setRoom] = useState<Room | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -204,12 +207,12 @@ export default function RoomPage() {
       <>
         <Navbar />
         <div className="flex flex-col items-center justify-center min-h-screen">
-          <h1 className="text-2xl font-bold mb-4">Room not found</h1>
+          <h1 className="text-2xl font-bold mb-4">{t('rooms.roomPage.notFound')}</h1>
           <button
             onClick={() => router.push('/rooms')}
             className="btn btn-primary"
           >
-            Back to Rooms
+            {t('rooms.roomPage.backToRooms')}
           </button>
         </div>
       </>
@@ -219,8 +222,11 @@ export default function RoomPage() {
   return (
     <>
       <Navbar />
-      <main className="pb-24">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
+      <main className="pt-24 pb-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
+          <BackButton />
+        </div>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Video Player and Lyrics */}
           <div className="lg:col-span-2">
             <div className="bg-gray-900 rounded-lg overflow-hidden">
@@ -240,13 +246,13 @@ export default function RoomPage() {
                   </div>
                 </div>
               </div>
-              
+
               {showLyrics && (
                 <div className="p-4 bg-gray-800 max-h-60 overflow-y-auto">
-                  <h3 className="font-bold mb-2">Lyrics</h3>
+                  <h3 className="font-bold mb-2">{t('rooms.roomPage.lyrics')}</h3>
                   <p className="text-gray-300">
                     {/* In a real app, fetch and display synchronized lyrics */}
-                    Lyrics would be displayed here, synchronized with the song playback.
+                    {t('player.lyricsPlaceholder')}
                   </p>
                 </div>
               )}
@@ -279,7 +285,7 @@ export default function RoomPage() {
 
               {showParticipants && (
                 <div className="mb-4">
-                  <h3 className="font-medium mb-2">Participants</h3>
+                  <h3 className="font-medium mb-2">{t('rooms.participants')}</h3>
                   <div className="flex flex-wrap gap-2">
                     {room.participants.map((participant) => (
                       <div key={participant.id} className="flex items-center bg-gray-700 rounded-full px-2 py-1">
@@ -299,7 +305,7 @@ export default function RoomPage() {
 
               {showChat && (
                 <div className="mb-4">
-                  <h3 className="font-medium mb-2">Chat</h3>
+                  <h3 className="font-medium mb-2">{t('rooms.roomPage.chat')}</h3>
                   <div className="bg-gray-900 rounded-lg p-2 h-60 overflow-y-auto mb-2">
                     {messages.map((message) => (
                       <div key={message.id} className="mb-2">
@@ -329,14 +335,14 @@ export default function RoomPage() {
                       type="text"
                       value={newMessage}
                       onChange={(e) => setNewMessage(e.target.value)}
-                      placeholder="Type a message..."
+                      placeholder={t('rooms.roomPage.messagePlaceholder')}
                       className="flex-1 bg-gray-700 border border-gray-600 rounded-l-lg px-3 py-2 focus:outline-none focus:ring-1 focus:ring-purple-500"
                     />
                     <button
                       type="submit"
                       className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-r-lg"
                     >
-                      Send
+                      {t('rooms.roomPage.sendMessage')}
                     </button>
                   </form>
                 </div>
@@ -344,10 +350,10 @@ export default function RoomPage() {
 
               <div>
                 <div className="flex justify-between items-center mb-2">
-                  <h3 className="font-medium">Queue</h3>
+                  <h3 className="font-medium">{t('rooms.roomPage.queue')}</h3>
                   <div className="flex items-center text-sm text-gray-400">
                     <FaMusic className="mr-1" />
-                    {room.queue.length} songs
+                    {room.queue.length} {t('rooms.songs').toLowerCase()}
                   </div>
                 </div>
                 <div className="bg-gray-900 rounded-lg p-2 max-h-60 overflow-y-auto">
@@ -372,11 +378,11 @@ export default function RoomPage() {
                       </div>
                     ))
                   ) : (
-                    <p className="text-gray-500 text-center py-4">No songs in queue</p>
+                    <p className="text-gray-500 text-center py-4">{t('rooms.roomPage.noSongs')}</p>
                   )}
                 </div>
                 <div className="mt-4">
-                  <SearchBar onSearch={(query) => console.log('Search:', query)} placeholder="Search for songs to add..." />
+                  <SearchBar onSearch={(query) => console.log('Search:', query)} placeholder={t('rooms.roomPage.searchSongs')} />
                 </div>
               </div>
             </div>

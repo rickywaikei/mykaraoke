@@ -8,6 +8,8 @@ import Navbar from '../components/Navbar';
 import RoomCard from '../components/RoomCard';
 import SearchBar from '../components/SearchBar';
 import { Room } from '../types';
+import { useLanguage } from '../contexts/LanguageContext';
+import BackButton from '../components/BackButton';
 
 // Mock data for demonstration
 const mockRooms: Room[] = [
@@ -95,6 +97,7 @@ const mockRooms: Room[] = [
 
 export default function RoomsPage() {
   const { data: session } = useSession();
+  const { t } = useLanguage();
   const [rooms, setRooms] = useState<Room[]>([]);
   const [filteredRooms, setFilteredRooms] = useState<Room[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -170,18 +173,21 @@ export default function RoomsPage() {
   return (
     <>
       <Navbar />
-      <main className="py-8">
+      <main className="pt-24 pb-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-4">
+          <BackButton />
+        </div>
         <div className="flex justify-between items-center mb-8">
-          <h1 className="text-3xl font-bold">Karaoke Rooms</h1>
+          <h1 className="text-3xl font-bold">{t('rooms.title')}</h1>
           <Link href="/rooms/create" className="btn btn-primary flex items-center">
-            <FaPlus className="mr-2" /> Create Room
+            <FaPlus className="mr-2" /> {t('rooms.create')}
           </Link>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           <div className="md:col-span-2">
             <div className="flex items-center">
-              <SearchBar onSearch={handleSearch} placeholder="Search rooms..." />
+              <SearchBar onSearch={handleSearch} placeholder={`${t('nav.search')} ${t('nav.rooms').toLowerCase()}...`} />
               <button
                 onClick={() => setShowFilters(!showFilters)}
                 className="ml-2 p-3 bg-gray-800 rounded-lg text-gray-300 hover:text-white"
@@ -199,7 +205,7 @@ export default function RoomsPage() {
                       : 'bg-gray-800 text-gray-300'
                   }`}
                 >
-                  Public Only
+                  {t('rooms.filters.publicOnly')}
                 </button>
                 <button
                   onClick={() => handleFilterChange('withParticipants')}
@@ -209,7 +215,7 @@ export default function RoomsPage() {
                       : 'bg-gray-800 text-gray-300'
                   }`}
                 >
-                  With Participants
+                  {t('rooms.filters.withParticipants')}
                 </button>
                 <button
                   onClick={() => handleFilterChange('withSongs')}
@@ -219,7 +225,7 @@ export default function RoomsPage() {
                       : 'bg-gray-800 text-gray-300'
                   }`}
                 >
-                  With Songs
+                  {t('rooms.filters.withSongs')}
                 </button>
               </div>
             )}
@@ -230,14 +236,14 @@ export default function RoomsPage() {
                 type="text"
                 value={roomCode}
                 onChange={(e) => setRoomCode(e.target.value)}
-                placeholder="Enter room code"
+                placeholder={t('rooms.enterCode')}
                 className="flex-1 bg-gray-800 border border-gray-700 rounded-l-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-600"
               />
               <button
                 type="submit"
                 className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-r-lg"
               >
-                Join
+                {t('rooms.join')}
               </button>
             </form>
           </div>
@@ -255,10 +261,10 @@ export default function RoomsPage() {
           </div>
         ) : (
           <div className="text-center py-12">
-            <h2 className="text-xl font-medium mb-2">No rooms found</h2>
-            <p className="text-gray-400 mb-6">Try adjusting your search or filters</p>
+            <h2 className="text-xl font-medium mb-2">{t('rooms.noRooms')}</h2>
+            <p className="text-gray-400 mb-6">{t('rooms.tryAdjusting')}</p>
             <Link href="/rooms/create" className="btn btn-primary">
-              Create a Room
+              {t('rooms.create')}
             </Link>
           </div>
         )}

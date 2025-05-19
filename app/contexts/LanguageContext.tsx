@@ -13,6 +13,13 @@ export const languageNames = {
   'zh-CN': '简体中文'
 };
 
+// Define simplified language labels
+export const languageLabels = {
+  'en': 'US EN',
+  'zh-TW': 'TW 繁',
+  'zh-CN': 'CN 簡'
+};
+
 // Define the context type
 type LanguageContextType = {
   language: Language;
@@ -80,8 +87,90 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
         button: "Get Started Now"
       }
     },
+    rooms: {
+      title: "Karaoke Rooms",
+      create: "Create Room",
+      join: "Join Now",
+      enterCode: "Enter room code",
+      noRooms: "No rooms found",
+      tryAdjusting: "Try adjusting your search or filters",
+      public: "Public",
+      private: "Private",
+      hosted: "Hosted by",
+      participants: "Participants",
+      songs: "Songs",
+      created: "Created",
+      filters: {
+        publicOnly: "Public Only",
+        withParticipants: "With Participants",
+        withSongs: "With Songs"
+      },
+      createRoom: {
+        title: "Create a Karaoke Room",
+        back: "Back",
+        name: "Room Name *",
+        namePlaceholder: "Enter a name for your room",
+        description: "Description",
+        descriptionPlaceholder: "Describe your karaoke room (optional)",
+        privacy: "Room Privacy",
+        publicDesc: "Anyone can find and join your room",
+        privateDesc: "Only people with the room code can join",
+        cancel: "Cancel",
+        creating: "Creating...",
+        createButton: "Create Room",
+        success: "Room created successfully!",
+        errors: {
+          notSignedIn: "You must be signed in to create a room",
+          nameRequired: "Room name is required",
+          failed: "Failed to create room"
+        }
+      },
+      roomPage: {
+        notFound: "Room not found",
+        backToRooms: "Back to Rooms",
+        lyrics: "Lyrics",
+        queue: "Queue",
+        noSongs: "No songs in queue",
+        searchSongs: "Search for songs to add...",
+        chat: "Chat",
+        sendMessage: "Send",
+        messagePlaceholder: "Type a message..."
+      }
+    },
+    player: {
+      currentlyPlaying: "Currently playing",
+      readyToStart: "Ready to start",
+      joinRoom: "Join Room",
+      lyricsPlaceholder: "Lyrics would be displayed here, synchronized with the song playback."
+    },
+    playlists: {
+      title: "Playlists",
+      create: "Create Playlist",
+      searchPlaceholder: "Search playlists...",
+      favoritesOnly: "Favorites Only",
+      songs: "songs",
+      noPlaylists: "No playlists found",
+      tryAdjusting: "Try adjusting your search or filters"
+    },
+    songs: {
+      popular: "Popular Songs",
+      searchPlaceholder: "Search songs...",
+      filters: "Filters",
+      favoritesOnly: "Favorites Only",
+      genre: "Genre",
+      language: "Language",
+      artist: "Artist",
+      title: "Title",
+      duration: "Duration",
+      plays: "Plays",
+      noSongs: "No songs found",
+      tryAdjusting: "Try adjusting your search or filters"
+    },
     language: {
       changeLanguage: "Change Language"
+    },
+    common: {
+      back: "Back"
     }
   };
 
@@ -153,9 +242,9 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
         let defaultValue = defaultTranslations;
         let found = true;
 
-        for (const k of keys) {
-          if (defaultValue && typeof defaultValue === 'object' && k in defaultValue) {
-            defaultValue = defaultValue[k];
+        for (const dk of keys) {
+          if (defaultValue && typeof defaultValue === 'object' && dk in defaultValue) {
+            defaultValue = defaultValue[dk];
           } else {
             found = false;
             break;
